@@ -26,7 +26,9 @@ const formSchema = new mongoose.Schema({
 });
 
 const FormData = mongoose.model('FormData', formSchema);
-
+app.get('/', (req, res) => {
+  res.send("Welcome to the backend API!");
+});
 app.post('/form-data', async (req, res) => {
     const { name, email, message } = req.body;
 
