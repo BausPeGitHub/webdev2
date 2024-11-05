@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const mongoose = require('mongoose');
 
-const url = `mongodb+srv://webclubutcluj:${Bauspeweb}@cluster0.vhftu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+const url = `mongodb+srv://webclubutcluj:Bauspeweb@cluster0.vhftu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
 mongoose.set('strictQuery', false)
 
