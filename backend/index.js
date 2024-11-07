@@ -22,20 +22,21 @@ const formSchema = new mongoose.Schema({
     name: String,
     email: String,
     message: String,
+    programmingLanguages: String,
     dateSubmitted: { type: Date, default: Date.now }
 });
 
 const FormData = mongoose.model('FormData', formSchema);
 
 app.post('/', async (req, res) => {
-    const { name, email, message } = req.body;
+    const { name, email, message, programmingLanguages } = req.body;
 
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !programmingLanguages) {
         return res.status(400).json({ error: 'Please fill in all fields.' });
     }
 
     try {
-        const newFormData = new FormData({ name, email, message });
+        const newFormData = new FormData({ name, email, message, programmingLanguages });
         await newFormData.save();
         res.status(200).json({ message: 'Form submitted and saved to database!' });
     } catch (error) {
