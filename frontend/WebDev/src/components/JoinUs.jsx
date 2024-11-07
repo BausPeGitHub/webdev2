@@ -6,7 +6,8 @@ function JoinUs() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        programmingLanguages: ''.
     });
     const [responseMessage, setResponseMessage] = useState('');
 
@@ -26,7 +27,7 @@ function JoinUs() {
         try {
             const response = await axios.post('http://localhost:3000/form-data', formData);
             setResponseMessage(response.data.message); // Show success message from the backend
-            setFormData({ name: '', email: '', message: '' }); // Clear form fields
+            setFormData({ name: '', email: '', message: '', programmingLanguages: '' }); // Clear form fields
         } catch (error) {
             const errorMsg = error.response?.data?.error || 'Failed to submit the form';
             setResponseMessage(errorMsg); // Show error message from backend or default error
@@ -63,10 +64,21 @@ function JoinUs() {
                 <br /><br />
 
                 <label>
-                    Message:
+                    Tell us something about yourself:
                     <textarea
                         name="message"
                         value={formData.message}
+                        onChange={handleChange}
+                        required
+                    />
+                </label>
+                <br /><br />
+
+                <label>
+                    Known programming languages:
+                    <textarea
+                        name="message"
+                        value={formData.programmingLanguages}
                         onChange={handleChange}
                         required
                     />
